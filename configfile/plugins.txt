@@ -1,0 +1,8 @@
+git
+configuration-as-code
+role-strategy
+maven-plugin
+cloudbees-folder
+job-dsl
+workflow-cps
+workflow-job
