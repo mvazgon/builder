@@ -17,7 +17,7 @@ jenkins:
     - envVars:
         env: 
           - key: gitToken
-            value: @@value@@
+            value: @@value-token@@
   authorizationStrategy:
     roleBased:
       roles:
@@ -40,9 +40,9 @@ jenkins:
       allowsSignup: false
       users:
         - id: "admin"
-          password: "@@value@@"
+          password: "@@value-admin@@"
         - id: "reader"
-          password: "@@value@@"
+          password: "@@value-reader@@"
 jobs:
   - script: >
       folder('testjobs')
