@@ -17,15 +17,18 @@ La configuración de Jenkins la podemos dividir en al menos 2 archivos, en uno d
 ### Plugins
 Deberemos de realizar una instalación de plugins según la plataforma y funcionalidades que vayamos a definir. La configuración mínnima necesitaremos plugin para trabajar con: SCM (git), DSL(scripts para definir pipelines), seguridad (si fuera necesario externalizar el repositorio de información). Es el archivo: 
 - plugins.txt el formato de este archivo es por línea:
-  - el nombre del plugin (hay que localizar el nombre verdadero en el repositorio de plugins de jenkins 
+  - el nombre del plugin (hay que localizar el nombre verdadero en el repositorio de plugins de jenkins que es el campo **id**.
+  - El nombre del plugin puede ser seguido por la versión con esta nomenclatura: git:5.2.2; o puede dejarse sin versión y se instalará la versión más actual.
 ### Usuarios y permisos
-En este aspecto al menos deberemos definir un subconjunto mínimo de usuario genéricos, usando el mecanismo interno de almacenamiento de identidades de Jenkins. Para ello al menos deberiamos definir los siguientes:
+En este aspecto al menos deberemos definir un subconjunto mínimo de usuario genéricos, usando el mecanismo interno de almacenamiento de identidades de Jenkins. Esta información se almacena en un solo archivo, con el resto de la configuración o en archivos separados. El dominio del archivo yaml es:
+
+Para ello al menos deberiamos definir los siguientes:
 - un usuadio **administrador**
 - un usuario **ejecutor** genérico para todos los jobs que intentaremos preconfigurar,
 - un usuario **lector** que nos servirá para conocer los builds ya realizados,
 - un usuario **tokenizado** que nos asociará un token a un usuario **ejecutor** que nos ayudará para la ejecución remota del job/s definidos
 #### Usuario administrador
-Definir un usuario administrador
+Definir un usuario administrador, usando 
 #### Usuarios ejecutores, para ejecución remota
 Definir un usuario ejecutor con capacidad de ejecución del proyecto y otro con capacidad de ejecución remota
 #### Usuarios lectores
