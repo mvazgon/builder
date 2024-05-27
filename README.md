@@ -27,12 +27,20 @@ Definir un usuario administrador
 Definir un usuario ejecutor con capacidad de ejecución del proyecto y otro con capacidad de ejecución remota
 #### Usuarios lectores
 Definir un usuario lector para poder recuperar via API las ejecuciones de los jobs 
+#### Usuarios para interactuar con las plataformas.
+Definir al menos 5 tipos de usuarios/credenciales para interactuar con:
+- cluster de docker-compose.,
+- cluster de kubernetes,
+- AWS
+- Azure,
+- GCP.
 ### Nodos
 Definiremos al menos 3 tipos de nodos para que se repartan las acciones, 
 - intentaremos definir uno de ellos con capacidad para levantar contenedores y otro
 - con capacidad para levantar pods, ya sean de forma:
   - directa con comandos kubectl y archivos yml, ya sean definidos localmente o remotamente desde un SCM
   - indirecta a partir de archivos de HELM, ya sean definidos localmente o remotamente desde un SCM
+- tercer tipo de nodos que nos permita de máquina de salto a : AWS 
 ### Jobs predefinidos, 
 Definiremos un job con las siguientes características de poder ser invocados, indepndientemente si son definidos en Jenkins como en un repositorio remoto
 #### como un DSL definido
