@@ -21,6 +21,7 @@ Deberemos de realizar una instalación de plugins según la plataforma y funcion
   - El nombre del plugin puede ser seguido por la versión con esta nomenclatura: git:5.2.2; o puede dejarse sin versión y se instalará la versión más actual.
 ### Usuarios y permisos
 En este aspecto al menos deberemos definir un subconjunto mínimo de usuario genéricos, usando el mecanismo interno de almacenamiento de identidades de Jenkins. Esta información se almacena en un solo archivo, con el resto de la configuración o en archivos separados. El dominio del archivo yaml es:
+
     authorizationStrategy:
       roleBased:
         roles:
@@ -31,6 +32,7 @@ En este aspecto al menos deberemos definir un subconjunto mínimo de usuario gen
               - "Overall/Administer"
             entries:
               - user: "admin"
+
 ; y después tenemos que definir el usuario y su password, en ese mismo archivo o en otro, con este dominio dentro del archivo yaml que es:
 
     authorizationStrategy:
