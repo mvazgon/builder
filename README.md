@@ -10,11 +10,14 @@ El proceso de usar este HELM se descompone en 2 pasos:
 - el segundo paso es desplegar el chart de helm con los comandos de HELM. Se deben de definir varias cuestiones:
   - primer lugar el como se almacena los valores de los password y token que se ha de definir. Podemos hacerlo desde objetos Secrets de Kubernetes o desde sistemas como vault,
   - para posteriormente en tiempo de ejecución sustituir esta información a través de un mecanismo de script.
-
+![image](https://github.com/mvazgon/builder/assets/26582415/29f412fc-2b91-4977-b6fd-f050c6df7755)
+; se puede apreciar en la esquina superior derecha el nombre del plugin. 
 ## Configuración de Jenkins.
 La configuración de Jenkins la podemos dividir en al menos 2 archivos, en uno de ellos se hará un listado de los plugins que deben de instarlarse en la imagen y en otro es la configuración de Jenkins para funcionar. 
 ### Plugins
-Deberemos de realizar una instalación de plugins según la plataforma y funcionalidades que vayamos a definir. La configuración mínnima necesitaremos plugin para trabajar con: SCM (git), DSL(scripts para definir pipelines), seguridad (si fuera necesario externalizar el repositorio de información)
+Deberemos de realizar una instalación de plugins según la plataforma y funcionalidades que vayamos a definir. La configuración mínnima necesitaremos plugin para trabajar con: SCM (git), DSL(scripts para definir pipelines), seguridad (si fuera necesario externalizar el repositorio de información). Es el archivo: 
+- plugins.txt el formato de este archivo es por línea:
+  - el nombre del plugin (hay que localizar el nombre verdadero en el repositorio de plugins de jenkins 
 ### Usuarios y permisos
 En este aspecto al menos deberemos definir un subconjunto mínimo de usuario genéricos, usando el mecanismo interno de almacenamiento de identidades de Jenkins. Para ello al menos deberiamos definir los siguientes:
 - un usuadio **administrador**
