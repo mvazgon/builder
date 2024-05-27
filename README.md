@@ -42,3 +42,13 @@ Un job de tipo SCM de forma que descarge de un repositorio remoto un jenkinsfile
 #### Invocación remota.
 Ambos tipos, definidos anteriormente se puedan invocar remotamente. 
 ### Mecanismo de invocación remota.
+El mecanismo de invocación remota será a partir del repositorio de un código cualquiera que nos permita:
+- invocar el job
+- que el job recupere de un repositorio el código para construir la aplicación y crear una imagen,
+- que despliegue la imagen de la aplicación dependiendo de la plataforma en:
+  - un servidor que soporte docker-compose
+  - un servidor/clúster que soporte kubernetes
+  - a través de un despligue de Terraform en AWS/Azure/GCP
+    - máquina virtual (descargando binario en el servidor tipo), 
+    - contenedores (docker-compose),
+    - kubernetes, (con HELM). 
