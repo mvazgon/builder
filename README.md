@@ -33,7 +33,14 @@ En este aspecto al menos deberemos definir un subconjunto mínimo de usuario gen
               - user: "admin"
 ; y después tenemos que definir el usuario y su password, en ese mismo archivo o en otro, con este dominio dentro del archivo yaml que es:
 
-    
+    authorizationStrategy:
+      securityRealm:
+        local:
+          allowsSignup: false
+          users:
+          - id: "admin"
+            password: "@@value-admin@@"
+            
 Para ello al menos deberiamos definir los siguientes:
 - un usuadio **administrador**
 - un usuario **ejecutor** genérico para todos los jobs que intentaremos preconfigurar,
