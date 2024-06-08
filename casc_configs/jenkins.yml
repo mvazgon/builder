@@ -1,23 +1,11 @@
 jenkins:
   systemMessage: |
     Welcome to our build server.
-
     This Jenkins is 100% configured and managed 'as code'.
-    Config is now mostly handled by the 'Jenkins Configuration as Code' (JCasC) plugin.
-    JCasC config can be found in the jenkins.yaml file in the $JENKINS_HOME/casc/ folder.
-
-    Some settings are still injected from init.groovy.d scripts,
-    but these settings will be ported over to JCasC as support becomes available.
-  # This is just a random example entry to show that there is no "end token" for 
-  # the multiline string apart from un-indent to the next YAML property.
   numExecutors: 3
   scmCheckoutRetryCount: 5
   mode: NORMAL
   globalNodeProperties:
-    - envVars:
-        env: 
-          - key: gitToken
-            value: @@value-token@@
   authorizationStrategy:
     roleBased:
       roles:
@@ -40,14 +28,36 @@ jenkins:
       allowsSignup: false
       users:
         - id: "admin"
-          password: "@@value-admin@@"
+          password: "#jbcrypt:$2a$10$A8KC6NqUYjHur8Tfjmi8d.KSBanoM2yeRYRlotF.j6Ei2NpKJSAny"
         - id: "reader"
-          password: "@@value-reader@@"
+          password: "#jbcrypt:$2a$10$A8KC6NqUYjHur8Tfjmi8d.KSBanoM2yeRYRlotF.j6Ei2NpKJSAny"
 jobs:
   - script: >
-      folder('testjobs')
+      folder('testJobsFromGit')
   - script: >
-      pipelineJob('testjobs/default-agent') {
+      pipelineJob('testJobsFromGit/test_job_from_git_jenkinsfile') {
+        description('Para cargar jobs que usan archivo jenkinsfile')
+        keepDependencies(false)
+        properties { }
+        disabled(false)
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote { url('https://github.com/mvazgon/curso_jenkins.git')}
+                branches ('*/cursoJenkins')
+                extensions { }
+                scriptPath('Jenkinsfile')
+                lightweight(true)
+              }
+            }
+          }
+        }  
+      }
+  - script: >
+      folder('testJobsFromFile')
+  - script: >
+      pipelineJob('testjobsFromFile/default-agent') {
         definition {
           cps {
             script("""\
